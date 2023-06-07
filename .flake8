@@ -1,0 +1,9 @@
+[flake8]
+max-line-lenght = 79
+max-complexity = 10
+exclude = 
+  migrations
+  venv
+  env
+per-file-ignores = 
+  settings.py:E501
