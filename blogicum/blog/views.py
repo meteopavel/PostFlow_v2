@@ -7,15 +7,15 @@ from blog.models import Post, Category
 def index(request):
     template_name = 'blog/index.html'
     post_list = Post.objects.select_related(
-            'author',
-            'location',
-            'category'
-        ).filter(
-            pub_date__lte=Now(),
-            is_published=True,
-            category__is_published=True
-        ).order_by(
-            '-pub_date'
+        'author',
+        'location',
+        'category'
+    ).filter(
+        pub_date__lte=Now(),
+        is_published=True,
+        category__is_published=True
+    ).order_by(
+        '-pub_date'
     )[:5]
     context = {
         'post_list': post_list,
