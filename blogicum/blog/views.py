@@ -16,7 +16,7 @@ def index(request):
             category__is_published=True
         ).order_by(
             '-pub_date'
-        )[:5]
+    )[:5]
     context = {
         'post_list': post_list,
     }
