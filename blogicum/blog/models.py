@@ -1,7 +1,7 @@
+from core.models import PublishedModel
+
 from django.contrib.auth import get_user_model
 from django.db import models
-
-from core.models import PublishedModel
 
 User = get_user_model()
 
