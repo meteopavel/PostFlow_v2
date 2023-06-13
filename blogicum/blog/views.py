@@ -3,8 +3,6 @@ from django.utils import timezone
 
 from blog.models import Category, Post
 
-now = timezone.now()
-
 
 def get_base_query():
     return Post.objects.select_related(
@@ -12,17 +10,15 @@ def get_base_query():
         'location',
         'category'
     ).filter(
-        pub_date__lte=now,
+        pub_date__lte=timezone.now(),
         is_published=True,
+        category__is_published=True,
     )
 
 
 def index(request):
     template_name = 'blog/index.html'
-    post_list = get_base_query(
-    ).filter(
-        category__is_published=True
-    )[:5]
+    post_list = get_base_query()[:5]
     context = {
         'post_list': post_list,
     }
@@ -32,10 +28,7 @@ def index(request):
 def post_detail(request, post_id):
     template_name = 'blog/detail.html'
     post = get_object_or_404(
-        get_base_query(
-        ).filter(
-            category__is_published=True
-        ),
+        get_base_query(),
         pk=post_id
     )
     context = {
@@ -47,10 +40,9 @@ def post_detail(request, post_id):
 def category_posts(request, category_slug):
     template_name = 'blog/category.html'
     category = get_object_or_404(
-        Category.objects.filter(
-            is_published=True,
-        ),
-        slug=category_slug
+        Category,
+        is_published=True,
+        slug=category_slug,
     )
     post_list = get_base_query(
     ).filter(
