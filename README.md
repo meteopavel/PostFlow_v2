@@ -28,29 +28,29 @@
    ```bash
    git clone https://github.com/ваш_профиль/PostFlow_v2.git
    cd django_sprint3
-2. **Создайте и активируйте виртуальное окружение :
+2. **Создайте и активируйте виртуальное окружение**:
    ```bash
    python -m venv venv
    source venv/bin/activate  # Для Linux/MacOS
    venv\Scripts\activate     # Для Windows
    ```
-3. **Установите зависимости :
+3. **Установите зависимости**:
    ```bash
    pip install -r requirements.txt
    ```
-4. **Примените миграции :
+4. **Примените миграции**:
    ```bash
    python manage.py migrate
    ```
-5. **Загрузите фикстуры :
+5. **Загрузите фикстуры**:
    ```bash
    python manage.py loaddata db.json
    ```
-6. **Запустите сервер :
+6. **Запустите сервер**:
    ```bash
    python manage.py runserver
    ```
-7. **Откройте в браузере :
+7. **Откройте в браузере**:
    ```bash
    http://127.0.0.1:8000/
    ```
